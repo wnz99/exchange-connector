@@ -1,0 +1,656 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it allows us to perform API calls to exchanges following 0x Standard Relayer API http getCandles returns data that provides a way to access charting candle info. 1`] = `
+Array [
+  1536246900000,
+  6437,
+  6448.3,
+  6448.9,
+  6437,
+  92.21998464,
+]
+`;
+
+exports[`it allows us to perform API calls to exchanges following 0x Standard Relayer API http getOrders accepts a precision parameter 1`] = `
+Array [
+  Array [
+    6460,
+    61,
+    152.2078253,
+  ],
+  Array [
+    6450,
+    89,
+    158.13021285,
+  ],
+  Array [
+    6440,
+    66,
+    165.25109659,
+  ],
+  Array [
+    6430,
+    47,
+    191.45334149,
+  ],
+  Array [
+    6420,
+    39,
+    122.41764199,
+  ],
+  Array [
+    6410,
+    58,
+    38.2891785,
+  ],
+  Array [
+    6400,
+    99,
+    217.40934717,
+  ],
+  Array [
+    6390,
+    28,
+    37.36685568,
+  ],
+  Array [
+    6380,
+    25,
+    33.7138432,
+  ],
+  Array [
+    6370,
+    25,
+    49.35168613,
+  ],
+  Array [
+    6360,
+    20,
+    153.54920056,
+  ],
+  Array [
+    6350,
+    33,
+    93.9210964,
+  ],
+  Array [
+    6340,
+    17,
+    134.18975848,
+  ],
+  Array [
+    6330,
+    14,
+    43.81506848,
+  ],
+  Array [
+    6320,
+    28,
+    244.18628691,
+  ],
+  Array [
+    6310,
+    36,
+    103.32617842,
+  ],
+  Array [
+    6300,
+    113,
+    94.47148166,
+  ],
+  Array [
+    6290,
+    30,
+    7.30790505,
+  ],
+  Array [
+    6280,
+    41,
+    115.08287976,
+  ],
+  Array [
+    6270,
+    44,
+    18.73424837,
+  ],
+  Array [
+    6260,
+    63,
+    51.5560615,
+  ],
+  Array [
+    6250,
+    95,
+    75.39290979,
+  ],
+  Array [
+    6240,
+    43,
+    71.12267138,
+  ],
+  Array [
+    6230,
+    34,
+    12.58502297,
+  ],
+  Array [
+    6220,
+    58,
+    71.02395226,
+  ],
+  Array [
+    6470,
+    19,
+    -44.33492824,
+  ],
+  Array [
+    6480,
+    46,
+    -84.49843428,
+  ],
+  Array [
+    6490,
+    31,
+    -41.23177763,
+  ],
+  Array [
+    6500,
+    49,
+    -116.32864428,
+  ],
+  Array [
+    6510,
+    49,
+    -143.81969106,
+  ],
+  Array [
+    6520,
+    50,
+    -18.94586756,
+  ],
+  Array [
+    6530,
+    41,
+    -52.09120466,
+  ],
+  Array [
+    6540,
+    54,
+    -66.52268278,
+  ],
+  Array [
+    6550,
+    84,
+    -80.09475518,
+  ],
+  Array [
+    6560,
+    46,
+    -55.58811164,
+  ],
+  Array [
+    6570,
+    53,
+    -48.73883031,
+  ],
+  Array [
+    6580,
+    47,
+    -72.38829277,
+  ],
+  Array [
+    6590,
+    60,
+    -152.52328516,
+  ],
+  Array [
+    6600,
+    97,
+    -254.20063817,
+  ],
+  Array [
+    6610,
+    28,
+    -103.88590791,
+  ],
+  Array [
+    6620,
+    31,
+    -28.10257253,
+  ],
+  Array [
+    6630,
+    30,
+    -24.16155728,
+  ],
+  Array [
+    6640,
+    41,
+    -84.0722359,
+  ],
+  Array [
+    6650,
+    62,
+    -45.60496963,
+  ],
+  Array [
+    6660,
+    30,
+    -8.42256614,
+  ],
+  Array [
+    6670,
+    47,
+    -152.41394961,
+  ],
+  Array [
+    6680,
+    39,
+    -22.51094629,
+  ],
+  Array [
+    6690,
+    42,
+    -91.14376112,
+  ],
+  Array [
+    6700,
+    99,
+    -141.74110639,
+  ],
+  Array [
+    6710,
+    43,
+    -19.52399359,
+  ],
+]
+`;
+
+exports[`it allows us to perform API calls to exchanges following 0x Standard Relayer API http getOrders returns orders on a price aggregated basis, with customizable precision. 1`] = `
+Array [
+  Array [
+    6475,
+    4,
+    2.81531805,
+  ],
+  Array [
+    6474.9,
+    1,
+    0.5,
+  ],
+  Array [
+    6473.7,
+    1,
+    1,
+  ],
+  Array [
+    6471,
+    1,
+    0.5,
+  ],
+  Array [
+    6470.9,
+    1,
+    0.057,
+  ],
+  Array [
+    6469.8,
+    1,
+    0.4,
+  ],
+  Array [
+    6469.6,
+    5,
+    2.36077791,
+  ],
+  Array [
+    6469,
+    1,
+    0.216,
+  ],
+  Array [
+    6468.7,
+    1,
+    3,
+  ],
+  Array [
+    6468.6,
+    1,
+    0.184,
+  ],
+  Array [
+    6468,
+    1,
+    0.15,
+  ],
+  Array [
+    6467.5,
+    1,
+    0.1,
+  ],
+  Array [
+    6467.4,
+    3,
+    0.71055382,
+  ],
+  Array [
+    6467.3,
+    10,
+    50,
+  ],
+  Array [
+    6466,
+    4,
+    1.1585758,
+  ],
+  Array [
+    6465.9,
+    1,
+    1,
+  ],
+  Array [
+    6465.7,
+    1,
+    0.2101537,
+  ],
+  Array [
+    6465.6,
+    1,
+    10.992,
+  ],
+  Array [
+    6465.5,
+    2,
+    0.98319954,
+  ],
+  Array [
+    6465,
+    1,
+    0.2,
+  ],
+  Array [
+    6464.7,
+    1,
+    0.078,
+  ],
+  Array [
+    6464.6,
+    1,
+    0.05,
+  ],
+  Array [
+    6464.5,
+    1,
+    0.05975002,
+  ],
+  Array [
+    6464.1,
+    1,
+    1.7,
+  ],
+  Array [
+    6464,
+    1,
+    1.5,
+  ],
+  Array [
+    6475.1,
+    15,
+    -6.49743405,
+  ],
+  Array [
+    6475.2,
+    2,
+    -0.54,
+  ],
+  Array [
+    6475.3,
+    1,
+    -0.45086514,
+  ],
+  Array [
+    6475.6,
+    1,
+    -0.4,
+  ],
+  Array [
+    6475.7,
+    4,
+    -3.006,
+  ],
+  Array [
+    6475.9,
+    1,
+    -0.4,
+  ],
+  Array [
+    6476.2,
+    1,
+    -0.1,
+  ],
+  Array [
+    6476.4,
+    1,
+    -0.4,
+  ],
+  Array [
+    6476.5,
+    2,
+    -0.23189285,
+  ],
+  Array [
+    6476.6,
+    1,
+    -1.5,
+  ],
+  Array [
+    6477,
+    1,
+    -0.2762478,
+  ],
+  Array [
+    6478.1,
+    1,
+    -0.391792,
+  ],
+  Array [
+    6478.2,
+    3,
+    -1.38648456,
+  ],
+  Array [
+    6478.4,
+    1,
+    -0.61838541,
+  ],
+  Array [
+    6478.8,
+    1,
+    -3,
+  ],
+  Array [
+    6478.9,
+    1,
+    -0.5,
+  ],
+  Array [
+    6479,
+    5,
+    -60.55606292,
+  ],
+  Array [
+    6479.3,
+    1,
+    -1,
+  ],
+  Array [
+    6480.1,
+    2,
+    -0.501147,
+  ],
+  Array [
+    6480.2,
+    1,
+    -0.04120458,
+  ],
+  Array [
+    6480.4,
+    1,
+    -0.30911018,
+  ],
+  Array [
+    6480.8,
+    4,
+    -0.84066873,
+  ],
+  Array [
+    6481,
+    1,
+    -0.75,
+  ],
+  Array [
+    6481.2,
+    1,
+    -1.39465075,
+  ],
+  Array [
+    6481.3,
+    1,
+    -0.61818118,
+  ],
+]
+`;
+
+exports[`it allows us to perform API calls to exchanges following 0x Standard Relayer API http getTickers returns data representing a high level overview of the state of the market. 1`] = `
+Array [
+  Array [
+    "tBTCUSD",
+    6979.9,
+    173.63342034,
+    6980,
+    19.86753773,
+    -414,
+    -0.056,
+    6979.9,
+    38117.9531546,
+    7410.9,
+    6921.5,
+  ],
+]
+`;
+
+exports[`it allows us to perform API calls to exchanges following 0x Standard Relayer API http trustless getConfig returns a list of all the tradable tokens and their addresses 1`] = `
+Object {
+  "0x": Object {
+    "ethfinexAddress": "0x61b9898c9b60a159fc91ae8026563cd226b7a0c1",
+    "exchangeAddress": "0xdcdb42c9a256690bd153a7b409751adfc8dd5851",
+    "exchangeSymbols": Array [
+      "tZRXETH",
+      "tOMGETH",
+      "tSANETH",
+      "tSNTETH",
+      "tEDOETH",
+      "tFUNETH",
+      "tREPETH",
+      "tMKRETH",
+      "tBATETH",
+      "tNIOETH",
+      "tSPKETH",
+      "tDAIETH",
+    ],
+    "minOrderTime": 300,
+    "protocol": "0x",
+    "tokenRegistry": Object {
+      "BAT": Object {
+        "decimals": 18,
+        "minOrderSize": 100,
+        "tokenAddress": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+        "wrapperAddress": "0xe82cfc4713598dc7244368cf5aca1b102a04ce33",
+      },
+      "DAI": Object {
+        "decimals": 18,
+        "minOrderSize": 25,
+        "tokenAddress": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+        "wrapperAddress": "0xd9ebebfdab08c643c5f2837632de920c70a56247",
+      },
+      "EDO": Object {
+        "decimals": 18,
+        "minOrderSize": 25,
+        "tokenAddress": "0xced4e93198734ddaff8492d525bd258d49eb388e",
+        "wrapperAddress": "0xab056a8119bb91ca50631bd319ee3df654bebfa2",
+      },
+      "ETH": Object {
+        "decimals": 18,
+        "minOrderSize": 0.1,
+        "wrapperAddress": "0xaa7427d8f17d87a28f5e1ba3adbb270badbe1011",
+      },
+      "FUN": Object {
+        "decimals": 8,
+        "minOrderSize": 1500,
+        "tokenAddress": "0x419d0d8bdd9af5e606ae2232ed285aff190e711b",
+        "wrapperAddress": "0xb33ce6b1e48f450b4c6d4c0a3f281237eeea2dec",
+      },
+      "MKR": Object {
+        "decimals": 18,
+        "minOrderSize": 0.04,
+        "tokenAddress": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+        "wrapperAddress": "0x38ae374ecf4db50b0ff37125b591a04997106a32",
+      },
+      "NEC": Object {
+        "decimals": 18,
+        "minOrderSize": 50,
+        "tokenAddress": "0xcc80c051057b774cd75067dc48f8987c4eb97a5e",
+        "wrapperAddress": "0xc94ec1f80c4423ae0cecb4296b5de530219f0f9d",
+      },
+      "NIO": Object {
+        "decimals": 0,
+        "minOrderSize": 840,
+        "tokenAddress": "0x5554e04e76533e1d14c52f05beef6c9d329e1e30",
+        "wrapperAddress": "0x680bf2eebf0ad9b183ac2ff88d16f5a4e41480e9",
+      },
+      "OMG": Object {
+        "decimals": 18,
+        "minOrderSize": 6,
+        "tokenAddress": "0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
+        "wrapperAddress": "0x60f8526f09caaf0008187945ccd88bc43790042c",
+      },
+      "REP": Object {
+        "decimals": 18,
+        "minOrderSize": 1.5,
+        "tokenAddress": "0x1985365e9f78359a9b6ad760e32412f4a445e862",
+        "wrapperAddress": "0x1488f99d305990694e19b3e72f6f0307cfa1df4e",
+      },
+      "SAN": Object {
+        "decimals": 18,
+        "minOrderSize": 50,
+        "tokenAddress": "0x7c5a0ce9267ed19b22f8cae653f198e3e8daf098",
+        "wrapperAddress": "0xb0abd4cc5195560209492b6854c666d7cff8c03c",
+      },
+      "SNT": Object {
+        "decimals": 18,
+        "minOrderSize": 600,
+        "tokenAddress": "0x744d70fdbe2ba4cf95131626614a1763df805b9e",
+        "wrapperAddress": "0x8aa72dd6045505836f643b39b82e70fd705f9686",
+      },
+      "SPK": Object {
+        "decimals": 18,
+        "minOrderSize": 400,
+        "tokenAddress": "0x42d6622dece394b54999fbd73d108123806f6a18",
+        "wrapperAddress": "0x70b04d0684ea9dc0c8e244e0a1453744350f3864",
+      },
+      "USD": Object {
+        "decimals": 6,
+        "minOrderSize": 25,
+        "tokenAddress": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "wrapperAddress": "0x1a9b2d827f26b7d7c18fec4c1b27c1e8deeba26e",
+      },
+      "ZRX": Object {
+        "decimals": 18,
+        "minOrderSize": 40,
+        "tokenAddress": "0xe41d2489571d322189246dafa5ebde1f4699f498",
+        "wrapperAddress": "0xcf67d7a481ceeca0a77f658991a00366fed558f7",
+      },
+    },
+  },
+}
+`;
