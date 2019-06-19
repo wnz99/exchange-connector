@@ -7,7 +7,7 @@ An API to simplify interaction with token Exchanges.
 ## Importing the package
 
 ```javascript
-import exchangeConnector, { supportedExchanges, NETWORKS, exchanges } from '@rigoblock/exchange-connector'
+import exchangeConnector, { supportedExchanges, NETWORKS, exchanges } from 'exchange-connector'
 ```
 
 ## How to use it
@@ -21,12 +21,12 @@ example:
 
 ```javascript
 // exchangeConnector.js
-import ExchangeConnector from '@rigoblock/exchange-connector'
+import ExchangeConnector from 'exchange-connector'
 
 export default new ExchangeConnector()
 
 // someOtherFile.js
-import { supportedExchanges, NETWORKS } from '@rigoblock/exchange-connector'
+import { supportedExchanges, NETWORKS } from 'exchange-connector'
 import connector from './exchangeConnector.js'
 
 const ethfinex = connector.getExchange(supportedExchanges.ETHFINEX, {
@@ -44,7 +44,7 @@ Some methods require specific parameters to be passed, these are saved under a p
 import {
   NETWORKS,
   supportedExchanges
-} from '@rigoblock/exchange-connector'
+} from 'exchange-connector'
 import connector from './exchangeConnector.js'
 
 const ethfinex = connector.getExchange(supportedExchanges.ETHFINEX, {
@@ -95,7 +95,3 @@ Runs tests with Jest watching for changes.
 ### `yarn lint`
 
 Lints all typescript files.
-
-### Note
-
-When developing the package locally, make sure to run `yarn bootstrap` in the root directory of the monorepo, and build the package before running it in other packages.
