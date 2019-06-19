@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/wnz99/exchange-connector.svg?style=svg&circle-token=a889f103118facb3f2784375fb88bfe5bc3e3059)](https://circleci.com/gh/wnz99/exchange-connector)
+
 # Exchange connector
 
 An API to simplify interaction with token Exchanges.
