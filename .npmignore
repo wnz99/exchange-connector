@@ -9,3 +9,4 @@ transpile.js
 .vscode/*
 .directory
 yarn.lock
+.circleci
