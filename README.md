@@ -4,6 +4,8 @@
 
 An API to simplify interaction with token Exchanges.
 
+Original code of [slyfox42](https://github.com/slyfox42) and [vshjxyz](https://github.com/vshjxyz) @ https://github.com/RigoBlock/rigoblock-monorepo/tree/master/packages/exchange-connector
+
 ## Importing the package
 
 ```javascript
