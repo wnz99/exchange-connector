@@ -10,9 +10,9 @@ export class EthfinexRaw {
     NETWORKS.KOVAN
   ];
   public static API_HTTP_URLS = {
-    [NETWORKS.MAINNET]: 'https://api.deversifi.com/v2',
-    [NETWORKS.ROPSTEN]: 'https://test.deversifi.com/v2',
-    [NETWORKS.KOVAN]: 'https://test.deversifi.com/v2'
+    [NETWORKS.MAINNET]: 'https://api.bitfinex.com/v2',
+    [NETWORKS.ROPSTEN]: 'https://test.ethfinex.com/v2',
+    [NETWORKS.KOVAN]: 'https://test.ethfinex.com/v2'
   };
   public static API_WS_URLS = {
     [NETWORKS.MAINNET]: 'wss://api-pub.bitfinex.com/ws/2',
@@ -20,7 +20,7 @@ export class EthfinexRaw {
     [NETWORKS.KOVAN]: 'wss://api-pub.bitfinex.com/ws/2'
   };
   public static TRUSTLESS_URLS = {
-    [NETWORKS.MAINNET]: 'https://api.deversifi.com/trustless/v1'
+    [NETWORKS.MAINNET]: 'https://api.ethfinex.com/trustless/v1'
   };
   public HTTP_URL: string;
   public WS_URL: string;
