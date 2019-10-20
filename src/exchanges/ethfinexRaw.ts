@@ -1,76 +1,83 @@
-import { NETWORKS, WS_STATUS } from '../constants'
-import { fetchJSON, getQueryParameters, postJSON } from '../utils'
-import ReconnectingWebSocket from 'reconnecting-websocket'
-import WS from 'ws'
+import { NETWORKS, WS_STATUS } from '../constants';
+import { fetchJSON, getQueryParameters, postJSON } from '../utils';
+import ReconnectingWebSocket from 'reconnecting-websocket';
+import WS from 'ws';
 
 export class EthfinexRaw {
-  static SUPPORTED_NETWORKS: NETWORKS[] = [NETWORKS.MAINNET, NETWORKS.ROPSTEN, NETWORKS.KOVAN]
+  static SUPPORTED_NETWORKS: NETWORKS[] = [
+    NETWORKS.MAINNET,
+    NETWORKS.ROPSTEN,
+    NETWORKS.KOVAN
+  ];
   public static API_HTTP_URLS = {
-    [NETWORKS.MAINNET]: 'https://api.ethfinex.com/v2',
-    [NETWORKS.ROPSTEN]: 'https://test.ethfinex.com/v2',
-    [NETWORKS.KOVAN]: 'https://test.ethfinex.com/v2'
-  }
+    [NETWORKS.MAINNET]: 'https://api.deversifi.com/v2',
+    [NETWORKS.ROPSTEN]: 'https://test.deversifi.com/v2',
+    [NETWORKS.KOVAN]: 'https://test.deversifi.com/v2'
+  };
   public static API_WS_URLS = {
-    [NETWORKS.MAINNET]: 'wss://api.ethfinex.com/ws/2',
-    [NETWORKS.ROPSTEN]: 'wss://test.ethfinex.com/ws/2',
-    [NETWORKS.KOVAN]: 'wss://test.ethfinex.com/ws/2'
-  }
+    [NETWORKS.MAINNET]: 'wss://api-pub.bitfinex.com/ws/2',
+    [NETWORKS.ROPSTEN]: 'wss://api-pub.bitfinex.com/ws/2',
+    [NETWORKS.KOVAN]: 'wss://api-pub.bitfinex.com/ws/2'
+  };
   public static TRUSTLESS_URLS = {
-    [NETWORKS.MAINNET]: 'https://api.ethfinex.com/trustless/v1'
-  }
-  public HTTP_URL: string
-  public WS_URL: string
-  public TRUSTLESS_URL: string
-  public wsStatus: string = WS_STATUS.CLOSED
-  public wsInstance: any
+    [NETWORKS.MAINNET]: 'https://api.deversifi.com/trustless/v1'
+  };
+  public HTTP_URL: string;
+  public WS_URL: string;
+  public TRUSTLESS_URL: string;
+  public wsStatus: string = WS_STATUS.CLOSED;
+  public wsInstance: any;
 
   constructor(
     public networkId: NETWORKS | number,
     public httpUrl?: string,
     public wsUrl?: string
   ) {
-    this.HTTP_URL = httpUrl || EthfinexRaw.API_HTTP_URLS[networkId]
-    this.WS_URL = wsUrl || EthfinexRaw.API_WS_URLS[networkId]
-    this.TRUSTLESS_URL = EthfinexRaw.TRUSTLESS_URLS[networkId]
+    this.HTTP_URL = httpUrl || EthfinexRaw.API_HTTP_URLS[networkId];
+    this.WS_URL = wsUrl || EthfinexRaw.API_WS_URLS[networkId];
+    this.TRUSTLESS_URL = EthfinexRaw.TRUSTLESS_URLS[networkId];
   }
 
   public http = {
     getTickers: (options: {
-      symbols: string[]
+      symbols: string[];
     }): Promise<EthfinexRaw.RawTicker[]> => {
-      const url = `${this.HTTP_URL}/tickers`
-      const symbols = options.symbols.map(pair => `t${pair}`).toString()
-      const queryParams = getQueryParameters({ symbols })
-      return fetchJSON(url, queryParams)
+      const url = `${this.HTTP_URL}/tickers`;
+      const symbols = options.symbols.map(pair => `t${pair}`).toString();
+      const queryParams = getQueryParameters({ symbols });
+      return fetchJSON(url, queryParams);
     },
     getOrders: (options: {
-      symbols: string
-      precision?: EthfinexRaw.OrderPrecisions
+      symbols: string;
+      precision?: EthfinexRaw.OrderPrecisions;
     }): Promise<EthfinexRaw.RawOrder[]> => {
-      const precision = options.precision || EthfinexRaw.OrderPrecisions.P0
-      const url = `${this.HTTP_URL}/book/t${options.symbols}/${precision}`
-      return fetchJSON(url)
+      const precision = options.precision || EthfinexRaw.OrderPrecisions.P0;
+      const url = `${this.HTTP_URL}/book/t${options.symbols}/${precision}`;
+      return fetchJSON(url);
     },
     getCandles: (options: {
-      timeframe: EthfinexRaw.CandlesTimeFrame
-      symbols: string
-      section: EthfinexRaw.CandlesSection
-      limit?: string // max number of candles we want to receive
-      sort?: EthfinexRaw.CandlesSort
-      start?: string // filter start (ms)
-      end?: string // filter end (ms)
+      timeframe: EthfinexRaw.CandlesTimeFrame;
+      symbols: string;
+      section: EthfinexRaw.CandlesSection;
+      limit?: string; // max number of candles we want to receive
+      sort?: EthfinexRaw.CandlesSort;
+      start?: string; // filter start (ms)
+      end?: string; // filter end (ms)
     }): Promise<EthfinexRaw.RawCandle[]> => {
-      const url = `${this.HTTP_URL}/candles/trade:${options.timeframe}:t${
-        options.symbols
-      }/${options.section}`
-      const { limit, start, sort, end } = options
-      const queryParams = getQueryParameters({ limit, sort, start, end })
-      return fetchJSON(url, queryParams)
+      const url = `${this.HTTP_URL}/candles/trade:${options.timeframe}:t${options.symbols}/${options.section}`;
+      const { limit, start, sort, end } = options;
+      const queryParams = getQueryParameters({
+        limit,
+        sort,
+        start,
+        end
+      });
+      return fetchJSON(url, queryParams);
     },
     trustless: {
       getConfig: () => {
-        const url = `${this.TRUSTLESS_URL}/r/get/conf`
-        return postJSON(url)
+        const url = `${this.TRUSTLESS_URL}/r/get/conf`;
+        return postJSON(url);
       },
       submitOrder: (
         type: string, // eg 'EXCHANGE LIMIT'
@@ -80,7 +87,7 @@ export class EthfinexRaw {
         meta: any, // signed order
         protocol: string // '0x'
       ) => {
-        const url = `${this.TRUSTLESS_URL}/w/on`
+        const url = `${this.TRUSTLESS_URL}/w/on`;
         const body = {
           type,
           symbol,
@@ -88,17 +95,17 @@ export class EthfinexRaw {
           price,
           meta,
           protocol
-        }
-        return postJSON(url, body)
+        };
+        return postJSON(url, body);
       },
       cancelOrder: (orderId: string, protocol: string, signature: string) => {
-        const url = `${this.TRUSTLESS_URL}/w/oc`
+        const url = `${this.TRUSTLESS_URL}/w/oc`;
         const body = {
           orderId,
           protocol,
           signature
-        }
-        return postJSON(url, body)
+        };
+        return postJSON(url, body);
       },
       getOpenOrders: (
         symbol: string,
@@ -106,91 +113,93 @@ export class EthfinexRaw {
         nonce: string,
         signature: string
       ) => {
-        const url = `${this.TRUSTLESS_URL}/r/orders/${symbol}`
+        const url = `${this.TRUSTLESS_URL}/r/orders/${symbol}`;
         const body = {
           protocol,
           nonce,
           signature
-        }
-        return postJSON(url, body)
+        };
+        return postJSON(url, body);
       },
       getOrderHistory: (protocol: string, nonce: string, signature: string) => {
-        const url = `${this.TRUSTLESS_URL}/r/orders/hist`
+        const url = `${this.TRUSTLESS_URL}/r/orders/hist`;
         const body = {
           protocol,
           nonce,
           signature
-        }
-        return postJSON(url, body)
+        };
+        return postJSON(url, body);
       }
     }
-  }
+  };
 
   public ws = {
     open: () => {
-      this.wsStatus = WS_STATUS.CONNECTING
+      this.wsStatus = WS_STATUS.CONNECTING;
       this.wsInstance = new ReconnectingWebSocket(this.WS_URL, [], {
         WebSocket:
           typeof window !== 'undefined' && window['WebSocket']
             ? window['WebSocket']
             : WS,
         minReconnectionDelay: 1
-      })
+      });
       return new Promise((resolve, reject) => {
         const rejectError = err => {
-          return reject(err)
-        }
-        this.wsInstance.addEventListener('error', rejectError)
+          return reject(err);
+        };
+        this.wsInstance.addEventListener('error', rejectError);
         this.wsInstance.addEventListener('open', () => {
-          this.wsInstance.removeEventListener('error', rejectError)
-          this.wsStatus = WS_STATUS.OPEN
-          return resolve(this.wsInstance)
-        })
-      })
+          this.wsInstance.removeEventListener('error', rejectError);
+          this.wsStatus = WS_STATUS.OPEN;
+          return resolve(this.wsInstance);
+        });
+      });
     },
     close: () => {
-      this.wsStatus = WS_STATUS.CLOSING
+      this.wsStatus = WS_STATUS.CLOSING;
       return new Promise(resolve => {
         this.wsInstance.addEventListener('close', () => {
-          this.wsStatus = WS_STATUS.CLOSED
-          this.wsInstance = null
-          return resolve()
-        })
-        this.wsInstance.close(1000, 'Closed by client', { keepClosed: true })
-      })
+          this.wsStatus = WS_STATUS.CLOSED;
+          this.wsInstance = null;
+          return resolve();
+        });
+        this.wsInstance.close(1000, 'Closed by client', {
+          keepClosed: true
+        });
+      });
     },
     getConnection: () => {
-      return this.wsInstance || this.ws.open()
+      return this.wsInstance || this.ws.open();
     },
     getTickers: async (
       options: { symbols: string[] },
       callback: (err: Error, message?: any) => any
     ): Promise<Function> => {
-      const ws = await this.ws.getConnection()
+      const ws = await this.ws.getConnection();
       const unsubscribeFuncs = options.symbols.map(symbols => {
         const unsubscribe = this.messagesListener(
           ws,
           m => m['pair'] === symbols,
           callback
-        )
+        );
         const msg = {
           event: 'subscribe',
           channel: 'ticker',
           symbol: `t${symbols}`
-        }
-        ws.send(JSON.stringify(msg))
+        };
+        ws.send(JSON.stringify(msg));
 
-        return unsubscribe
-      })
-      return () => unsubscribeFuncs.map(fn => fn())
+        return unsubscribe;
+      });
+      return () => unsubscribeFuncs.map(fn => fn());
     },
     getAggregatedOrders: async (
       options: {
-        symbols: string
-        precision?: EthfinexRaw.OrderPrecisions
-        frequency?: EthfinexRaw.BookFrequency
-        len: number
-        configFlags?: EthfinexRaw.ConfigurationFlags[]
+        symbols: string;
+        precision?: EthfinexRaw.OrderPrecisions;
+        frequency?: EthfinexRaw.BookFrequency;
+        len: number;
+        configFlags?: EthfinexRaw.ConfigurationFlags[];
       },
       callback: (err: Error, message?: any) => any
     ): Promise<Function> => {
@@ -203,9 +212,9 @@ export class EthfinexRaw {
           EthfinexRaw.ConfigurationFlags.SEQ_ALL,
           EthfinexRaw.ConfigurationFlags.CHECKSUM
         ]
-      }
-      options = { ...defOptions, ...options }
-      const ws = await this.ws.getConnection()
+      };
+      options = { ...defOptions, ...options };
+      const ws = await this.ws.getConnection();
       const msg = {
         event: 'subscribe',
         channel: 'book',
@@ -213,54 +222,54 @@ export class EthfinexRaw {
         prec: `${options.precision}`,
         freq: `${options.frequency}`,
         len: options.len
-      }
+      };
       const unsubscribe = this.messagesListener(
         ws,
         m => m['symbol'] === `t${options.symbols}`,
         callback
-      )
+      );
       let flags = options.configFlags.reduce((acc, flag) => {
-        return acc + flag
-      })
+        return acc + flag;
+      });
       ws.send(
         JSON.stringify({
           event: 'conf',
           flags
         })
-      )
-      ws.send(JSON.stringify(msg))
-      return unsubscribe
+      );
+      ws.send(JSON.stringify(msg));
+      return unsubscribe;
     },
     getCandles: async (
       options: {
-        timeframe: string
-        symbols: string
+        timeframe: string;
+        symbols: string;
       },
       callback: (err: Error, message?: any) => any
     ): Promise<Function> => {
-      const ws = await this.ws.getConnection()
+      const ws = await this.ws.getConnection();
       const msg = {
         event: 'subscribe',
         channel: 'candles',
         key: `trade:${options.timeframe}:t${options.symbols}`
-      }
+      };
       const unsubscribe = this.messagesListener(
         ws,
         m => m['key'] === `trade:${options.timeframe}:t${options.symbols}`,
         callback
-      )
-      ws.send(JSON.stringify(msg))
-      return unsubscribe
+      );
+      ws.send(JSON.stringify(msg));
+      return unsubscribe;
     }
-  }
+  };
 
   private messagesListener = (
     websocketInstance,
     filter,
     callback: (err: Error, message?: any) => any
   ) => {
-    let msgCallback
-    let chanId
+    let msgCallback;
+    let chanId;
     const unsubscribe = () => {
       if (msgCallback && chanId) {
         websocketInstance.send(
@@ -268,28 +277,28 @@ export class EthfinexRaw {
             event: 'unsubscribe',
             chanId
           })
-        )
-        return websocketInstance.removeEventListener('message', msgCallback)
+        );
+        return websocketInstance.removeEventListener('message', msgCallback);
       }
-    }
+    };
 
     msgCallback = message => {
-      const msg = JSON.parse(message.data)
+      const msg = JSON.parse(message.data);
       if (msg.event === 'subscribed' && filter(msg)) {
-        chanId = msg.chanId
-        return callback(null, msg)
+        chanId = msg.chanId;
+        return callback(null, msg);
       }
       if (Array.isArray(msg) && msg[0] === chanId) {
-        return callback(null, msg)
+        return callback(null, msg);
       }
-    }
+    };
 
-    websocketInstance.addEventListener('message', msgCallback)
-    return unsubscribe
-  }
+    websocketInstance.addEventListener('message', msgCallback);
+    return unsubscribe;
+  };
 
   public network(id: number = NETWORKS.MAINNET): EthfinexRaw {
-    return new EthfinexRaw(id)
+    return new EthfinexRaw(id);
   }
   public options = {
     orderPrecisions: EthfinexRaw.OrderPrecisions,
@@ -298,7 +307,7 @@ export class EthfinexRaw {
     candlesTimeFrame: EthfinexRaw.CandlesTimeFrame,
     candlesSection: EthfinexRaw.CandlesSection,
     candlesSort: EthfinexRaw.CandlesSort
-  }
+  };
 }
 
 export namespace EthfinexRaw {
@@ -314,12 +323,12 @@ export namespace EthfinexRaw {
     number, // VOLUME,
     number, // HIGH,
     number // LOW
-  ]
+  ];
   export type RawOrder = [
     number, // PRICE,
     number, // COUNT,
     number // AMOUNT
-  ]
+  ];
 
   export type RawCandle = [
     number, //MTS,
@@ -328,7 +337,7 @@ export namespace EthfinexRaw {
     number, //HIGH,
     number, //LOW,
     number //VOLUME
-  ]
+  ];
 
   export enum OrderPrecisions {
     P0 = 'P0',
@@ -378,4 +387,4 @@ export namespace EthfinexRaw {
   }
 }
 
-export default EthfinexRaw
+export default EthfinexRaw;
